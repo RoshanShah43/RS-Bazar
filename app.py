@@ -128,7 +128,7 @@ def create_order():
                      (user_id, game_title, package_label, uid, server_id, quantity, price, total, esewa_code, status)
                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)''',
                   (user_id, order.get('gameTitle'), order.get('packageLabel'), order.get('uid'),
-                   order.get('serverId'), order.get('quantity', 1), order.get('price', 0),
+                   order.get('serverId'), order.get.get('quantity', 1), order.get('price', 0),
                    order.get('total', 0), order.get('esewaCode'), order.get('status', 'Pending')))
 
     db.commit()
