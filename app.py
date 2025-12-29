@@ -162,6 +162,26 @@ def get_all_users():
     users = db.execute('SELECT id, username, email, is_admin, created_at FROM users').fetchall()
     return jsonify([dict(user) for user in users]), 200
 
+@app.route('/')
+def index():
+    return send_from_directory('.', 'index.html')
+
+@app.route('/login.html')
+def serve_login():
+    return send_from_directory('.', 'login.html')
+
+@app.route('/profile.html')
+def serve_profile():
+    return send_from_directory('.', 'profile.html')
+
+@app.route('/admin.html')
+def serve_admin():
+    return send_from_directory('.', 'admin.html')
+
+@app.route('/<path:filename>')
+def static_files(filename):
+    return send_from_directory('.', filename)
+
 if __name__ == '__main__':
     init_db()
     app.run(debug=True, host='0.0.0.0', port=5000)
